@@ -1,1 +1,1 @@
-web: python bells_bot.py
+web: gunicorn bells_bot:app

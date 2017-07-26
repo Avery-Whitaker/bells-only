@@ -40,4 +40,4 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run(port=int(os.environ['PORT']), debug=True)
+    app.run(debug=True)
