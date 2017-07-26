@@ -5,6 +5,7 @@ in any messages that the bot receives and echos it back.
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
+import re
 
 app = Flask(__name__)
 
@@ -30,12 +31,10 @@ def hello():
                     recipient_id = x['sender']['id']
                     if x['message'].get('text'):
                         message = x['message']['text']
-                        bot.send_text_message(recipient_id, message)
-                    if x['message'].get('attachments'):
-                        for att in x['message'].get('attachments'):
-                            bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
-                else:
-                    pass
+                        matchObj = re.match(r'\/bell ?([0-9]+)?', message)
+                        if matchObj:
+                          for i in range(0, int(matchObj.group(1) if matchObj.group(1) is not None else 1)):
+                            bot.send_text_message(recipient_id, "🔔")
         return "Success"
 
 
