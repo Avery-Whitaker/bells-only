@@ -4,6 +4,7 @@ in any messages that the bot receives and echos it back.
 """
 from flask import Flask, request
 from pymessenger.bot import Bot
+import os
 
 app = Flask(__name__)
 
@@ -39,4 +40,4 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run(port=80, debug=True)
+    app.run(port=os.environ['PORT'], debug=True)
