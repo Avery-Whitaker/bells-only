@@ -1,2 +1,4 @@
 pymessenger
 flask
+gunicorn
+requests
