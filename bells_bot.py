@@ -33,7 +33,7 @@ def hello():
                         message = x['message']['text']
                         matchObj = re.match(r'\/bell ?([0-9]+)?', message)
                         if matchObj:
-                          for i in range(0, min(10, int(matchObj.group(1) if matchObj.group(1) is not None else 1))):
+                          for i in range(0, min(100, int(matchObj.group(1) if matchObj.group(1) is not None else 1))):
                             bot.send_text_message(recipient_id, "🔔")
                         else:
                           bot.send_text_message(reciptient_id, "Hello! Thanks for talking to the bells only bot. I love bells! I am great and ringing the bell. Type the command \'/bell\' to have me ring the bell! I can also ring it multiple times, for example \'/bell 3\'. I can't ring it more then 10 at once, sorry.")
